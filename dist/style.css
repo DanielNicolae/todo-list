@@ -53,11 +53,36 @@ form .todoButton:active
   background: rgb(253, 203, 146);
 }
 
+.filterTasks
+{
+  border: none;
+  padding: 0.5rem;
+  transform: translateX(5%);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+  cursor: pointer;
+  box-shadow: none;
+  width: 7.8rem;
+}
+
+.select::after
+{
+  
+  content: "\25BC";
+  transform: translateX(-5rem);
+  padding: 0.1rem;
+  position: absolute;
+  right: 108px;
+  background: rgb(15, 27, 95);
+  pointer-events: none;
+}
+
 .todoList
 {
   list-style: none;
   transform: translateX(3.5%);
-  transition: all 0.5s ease;
 }
 
 .todoList .todoTaskContainer
@@ -65,6 +90,7 @@ form .todoButton:active
   display: flex;
   margin: 0.2em;
   align-items: center;
+  transition: all 0.5s ease;
 }
 
 .completedButton, .trashButton
@@ -93,5 +119,11 @@ form .todoButton:active
 .completed 
 {
   text-decoration: line-through;
-  opacity: 0.3;
+  opacity: 0.5;
+}
+
+.scaleDown
+{
+  transform: scale(0.3);
+  opacity: 0;
 }
