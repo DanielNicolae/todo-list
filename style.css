@@ -77,3 +77,18 @@ form .todoButton:active
 {
   background: rgb(255, 27, 27);
 }
+
+.completedButton
+{
+  background: rgb(96, 255, 75);
+}
+
+.fa-trash, .fa-check
+{
+  pointer-events: none;
+}
+
+.completed 
+{
+  text-decoration: overline;
+}
