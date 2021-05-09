@@ -56,6 +56,8 @@ form .todoButton:active
 .todoList
 {
   list-style: none;
+  transform: translateX(3.5%);
+  transition: all 0.5s ease;
 }
 
 .todoList .todoTaskContainer
@@ -90,5 +92,6 @@ form .todoButton:active
 
 .completed 
 {
-  text-decoration: overline;
+  text-decoration: line-through;
+  opacity: 0.3;
 }

@@ -1,4 +1,4 @@
-const { charset } = require("mime-types");
+
 
 // Selectors
 const todoInput = document.querySelector(".todoInput");
@@ -10,6 +10,27 @@ todoButton.addEventListener("click", addTodoTask);
 
 
 // Functions
+
+function deleteListTask(e) {
+  const deleteBtn = e.target;
+  if (deleteBtn.classList[0] === "trashButton") {
+    const parent = deleteBtn.parentElement;
+    parent.remove();
+  }
+}
+
+function completedTask(event) {
+  const checkBtn = event.target;
+  if (checkBtn.classList[0] === "completedButton") {
+    const parent = checkBtn.parentElement;
+    if (parent.classList[1] === "completed") {
+      parent.classList.remove("completed");
+    } else {
+      parent.classList.add("completed");
+    }
+  }
+}
+
 function addTodoTask(event) {
   event.preventDefault();
   const todoTaskContainer = document.createElement("div");
@@ -23,6 +44,7 @@ function addTodoTask(event) {
   completedBotton.classList.add("completedButton");
   completedBotton.addEventListener("click", completedTask);
   todoTaskContainer.appendChild(completedBotton);
+
   todoTaskContainer.appendChild(todoTask);
 
   const trashBotton = document.createElement("button");
@@ -35,19 +57,5 @@ function addTodoTask(event) {
   todoInput.value = "";
 }
 
-function deleteListTask(event) {
-  const deleteBtn = event.target;
-  if (deleteBtn.classList[0] === "traskButton") {
-    const parent = deleteBtn.parentElement;
-    parent.remove();
-  }
-}
 
-function completedTask(event) {
-  const checkBtn = event.target;
-  if (checkBtn.classList[0] === "completedButton") {
-    const parent = checkBtn.parentElement;
-    parent.classList.add("completed");
-  }
-}
 
