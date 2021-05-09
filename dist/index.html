@@ -6,14 +6,31 @@
   <meta name="robots" content="index, follow" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link type="stylesheet" href="./style.css" />
+  <script src="https://kit.fontawesome.com/9934a22c85.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="./style.css" />
   <title>Todo list</title>
 </head>
 
 <body>
-  <header id="header"></header>
-  <main id="main"></main>
-  <footer id="footer"></footer>
+  <div class="container">
+    <header id="header">
+      <h1>
+        TODO LIST
+      </h1>
+    </header>
+    <main id="main">
+      <form>
+        <input type="text" class="todoInput" />
+        <button class="todoButton">Add</button>
+      </form>
+      <div class="todoContainer">
+        <ul class="todoList"></ul>
+      </div>
+    </main>
+    <footer id="footer"></footer>
+  </div>
+
+  <script src="./main.js"></script>
 </body>
 
 </html>
