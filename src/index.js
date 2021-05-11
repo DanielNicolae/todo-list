@@ -1,14 +1,15 @@
 import deleteListTask from "./deletetask";
 import completedTask from "./completedtask";
+import filterList from "./filterList";
 
 // Selectors
 const todoInput = document.querySelector(".todoInput");
 const todoButton = document.querySelector(".todoButton");
 const todoList = document.querySelector(".todoList");
-
+const filterDropdown = document.querySelector(".filterTasks");
 
 todoButton.addEventListener("click", addTodoTask);
-
+filterDropdown.addEventListener("click", filterList);
 
 // Functions
 function addTodoTask(event) {
@@ -37,5 +38,5 @@ function addTodoTask(event) {
   todoInput.value = "";
 }
 
-
+filterList();
 
