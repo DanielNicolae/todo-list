@@ -8,6 +8,7 @@ const todoButton = document.querySelector(".todoButton");
 const todoList = document.querySelector(".todoList");
 const filterDropdown = document.querySelector(".filterTasks");
 
+//Event listeners
 todoButton.addEventListener("click", addTodoTask);
 filterDropdown.addEventListener("click", filterList);
 
@@ -16,6 +17,7 @@ function addTodoTask(event) {
   event.preventDefault();
   const todoTaskContainer = document.createElement("div");
   todoTaskContainer.classList.add("todoTaskContainer");
+
   const todoTask = document.createElement("li");
   todoTask.classList.add("todoTask");
   todoTask.innerText = todoInput.value;
@@ -36,6 +38,17 @@ function addTodoTask(event) {
 
   todoList.appendChild(todoTaskContainer);
   todoInput.value = "";
+
+  // todo description
+  const descriptionAndDateBox = document.createElement("div");
+  descriptionAndDateBox.classList.add("descriptionAndDateBox");
+  const todoDescription = document.createElement("p");
+  todoDescription.classList.add("todoDescription");
+  const todoDate = document.createElement("p");
+  todoDate.classList.add("todoDate");
+  descriptionAndDateBox.appendChild(todoDescription);
+  descriptionAndDateBox.appendChild(todoDate);
+  todoTaskContainer.appendChild(descriptionAndDateBox);
 }
 
 filterList();

@@ -7,11 +7,11 @@ export default function filterList(e) {
   todos.forEach((todo) => {
     switch (e.target.value) {
       case "all":
-        todo.style.display = "flex";
+        todo.style.display = "grid";
         break;
       case "completed":
         if (todo.classList.contains("completed")) {
-          todo.style.display = "flex";
+          todo.style.display = "grid";
         } else {
           todo.style.display = "none";
         }
@@ -20,7 +20,7 @@ export default function filterList(e) {
         if (todo.classList.contains("completed")) {
           todo.style.display = "none";
         } else {
-          todo.style.display = "flex";
+          todo.style.display = "grid";
         }
         break;
     }
