@@ -23,13 +23,23 @@
         <input type="text" class="todoInput" />
         <button class="todoButton">Add</button>
         <textarea class="inputDescription" placeholder="Description"></textarea>
+        <div class="datePicker">
+          <div class="selectedDate">25/05/5689</div>
+          <div class="dates">
+            <div class="month">
+              <div class="arrow prevMonth">&lt;</div>
+              <div class="date">hohou</div>
+              <div class="arrow nextMonth">&gt;</div>
+            </div>
+            <div class="days"></div>
+          </div>
+        </div>
         <div class="select">
           <select name="tasks" class="filterTasks">
             <option value="all">All</option>
             <option value="completed">Completed</option>
             <option value="uncompleted">Uncompleted</option>
           </select>
-          <!-- <div class="selectArrow"></div> -->
         </div>
       </form>
       <div class="todoContainer">

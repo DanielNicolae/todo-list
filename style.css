@@ -21,17 +21,16 @@ body
   margin: 10vh;
   width: 90%;
   font-size: clamp(1em, 2vw, 2em);
-  line-height: 1.5em;
+  line-height: 1.3em;
 }
 
   form
   {
     margin-top: 1.5em;
     display: grid;
-    grid-template-columns: 3fr 4rem;
+    grid-template-columns: 3fr auto;
     grid-template-rows: auto auto auto;
   }
-
     form .todoButton, form .todoInput
     {
       border: none;
@@ -44,6 +43,7 @@ body
     }
     form .todoButton
     {
+      width: 4rem;
       margin-left: 5px;
       transition: all 300ms cubic-bezier(0.2, 0, 0, 0.8);
     }
@@ -59,17 +59,76 @@ body
 
     form .inputDescription
     {
-      grid-row-start: 1;
-      grid-row-end: 2;
       grid-row-start: 2;
+      grid-row-end: 3;
       padding: 0.5em;
       margin: 5px 0 5px 0;
     }
-
+    form .datePicker
+    {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-content: center;
+      cursor: pointer;
+      user-select: none;
+      background: #fff;
+      color: #252525;
+      margin: 5px 0 5px 5px;
+      padding: 0 0.5rem;
+    }
+      .datePicker .selectedDate
+      {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .datePicker .dates
+      {
+        display: none;
+      }
+      .datePicker .dates.active
+      {
+        display: block;
+        z-index: 1001;
+      }
+        .datePicker .dates .month
+        {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          border-bottom: 2px solid #3f3e3e;
+        }
+          .datePicker .dates .month .arrow:hover
+          {
+            background: #f3f3f3;
+          }
+          .datePicker .dates .month .arrow:active
+          {
+            background: #ffed4d;
+          }
+        .datePicker .dates .days
+        {
+          height: 200px;
+        }
+        
+    form .datePicker:hover
+    {
+      background: #dad9d9;
+    }
     .select
     {
       grid-row-start: 3;
       display: flex;
+    }
+    .select::after
+    {
+      content: "\25BC";
+      background: rgb(15, 27, 95);
+      pointer-events: none;
+      transform: translateX(-1rem);
+      z-index: 1000; 
+      font-size: 2rem;   
     }
       .filterTasks
       {
@@ -83,15 +142,6 @@ body
         width: 8.3rem;
         padding: 0.6rem;
       }
-      .select::after
-      {
-        content: "\25BC";
-        background: rgb(15, 27, 95);
-        pointer-events: none;
-        transform: translateX(-1rem);
-        z-index: 1000; 
-        font-size: 2rem;   
-      }
   .todoContainer
   {
     color: black;
@@ -100,16 +150,16 @@ body
     {
       list-style: none;
     } 
-
       .todoList .todoTaskContainer
       {
         display: grid;
-        grid-template-columns: 1fr 2fr 1fr;
-        margin: 0.2em;
+        grid-template-columns: 3rem 3fr 3rem;
+        grid-template-rows: auto auto auto;
+        margin: 5px 0;
         align-items: center;
         transition: all 0.5s ease;
+        background: rgba(185, 185, 185, 0.2);
       }
-
         .completedButton, .trashButton
         {
           padding: 0.5em;
@@ -131,6 +181,24 @@ body
         .fa-trash, .fa-check
         {
           pointer-events: none;
+        }
+
+        .todoDescription, .todoDate
+        {
+          grid-column-start: 1;
+          grid-column-end: 4;
+          padding: 0 0.5rem;
+        }
+
+        .todoDescription
+        {
+          grid-row-start: 2;
+          word-break: break-word;
+        }
+
+        .todoDate
+        {
+          grid-row-start: 3;
         }
 
       .completed 
