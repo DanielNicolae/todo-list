@@ -1,16 +1,20 @@
 import deleteListTask from "./deletetask";
 import completedTask from "./completedtask";
 import filterList from "./filterList";
+import toggleDatePicker from "./datePicker";
 
 // Selectors
 const todoInput = document.querySelector(".todoInput");
 const todoButton = document.querySelector(".todoButton");
 const todoList = document.querySelector(".todoList");
 const filterDropdown = document.querySelector(".filterTasks");
+const todoDescriptionText = document.querySelector(".inputDescription");
+const datePicker = document.querySelector(".datePicker");
 
 //Event listeners
 todoButton.addEventListener("click", addTodoTask);
 filterDropdown.addEventListener("click", filterList);
+datePicker.addEventListener("click", toggleDatePicker);
 
 // Functions
 function addTodoTask(event) {
@@ -40,15 +44,14 @@ function addTodoTask(event) {
   todoInput.value = "";
 
   // todo description
-  const descriptionAndDateBox = document.createElement("div");
-  descriptionAndDateBox.classList.add("descriptionAndDateBox");
   const todoDescription = document.createElement("p");
   todoDescription.classList.add("todoDescription");
+  todoDescription.innerText = todoDescriptionText.value;
   const todoDate = document.createElement("p");
   todoDate.classList.add("todoDate");
-  descriptionAndDateBox.appendChild(todoDescription);
-  descriptionAndDateBox.appendChild(todoDate);
-  todoTaskContainer.appendChild(descriptionAndDateBox);
+  todoTaskContainer.appendChild(todoDescription);
+  todoTaskContainer.appendChild(todoDate);
+  todoDescriptionText.value = "";
 }
 
 filterList();
