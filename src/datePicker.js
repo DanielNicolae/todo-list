@@ -22,6 +22,7 @@ function getNextMonth(e) {
     year++;
   }
   monthUI.textContent = months[month] + " " + year;
+  populateDates();
 }
 
 function getPrevMonth(e) {
@@ -31,6 +32,7 @@ function getPrevMonth(e) {
     year--;
   }
   monthUI.textContent = months[month] + " " + year;
+  populateDates();
 }
 
 
@@ -38,8 +40,24 @@ function generateDate() {
   monthUI.textContent = months[month] + " " + year;
 }
 
+function selectDate() {
+  selectedDateUI.textContent = selectDateHelper(date);
+}
+
+function selectDateHelper(d) {
+  let day = d.getDate();
+  if (day < 10) {
+    day = "0" + day;
+  }
+  let month = d.getMonth() + 1;
+  if (month < 10) {
+    month = "0" + month;
+  }
+  let year = d.getFullYear();
+  return (day + "/" + month + "/" + year);
+}
+
 function toggleDatePicker(event) {
-  console.log(event.target)
   if (checkEventPathForClass(event.target, "selectedDate")) {
     datesUI.classList.toggle("active");
   }
@@ -52,4 +70,20 @@ function checkEventPathForClass(path, selector) {
   return false;
 }
 
-export { toggleDatePicker, generateDate, getNextMonth, getPrevMonth };
+function populateDates(e) {
+  daysUI.innerHTML = "";
+  let days = 31;
+  if (month === 1) {
+    days = 28;
+  } else if (month === 3 || month === 5 || month === 8 || month === 10) {
+    days = 30;
+  }
+  for (let i = 0; i < days; i++) {
+    const dayElement = document.createElement("div");
+    dayElement.classList.add("day");
+    dayElement.textContent = i + 1;
+    daysUI.appendChild(dayElement);
+  }
+}
+
+export { toggleDatePicker, generateDate, getNextMonth, getPrevMonth, selectDate, populateDates };
