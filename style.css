@@ -110,6 +110,19 @@ body
         .datePicker .dates .days
         {
           height: 200px;
+          display: grid;
+          grid-template-columns: repeat(7, 1fr);
+        }
+        .datePicker .dates .days .day
+        {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: #303030;
+        }
+        .datePicker .dates .days .day.selected
+        {
+          background: rgb(255, 241, 39);
         }
         
     form .datePicker:hover
