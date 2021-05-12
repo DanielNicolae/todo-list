@@ -1,7 +1,7 @@
 import deleteListTask from "./deletetask";
 import completedTask from "./completedtask";
 import filterList from "./filterList";
-import { toggleDatePicker, generateDate } from "./datePicker";
+import { toggleDatePicker, generateDate, getNextMonth, getPrevMonth } from "./datePicker";
 
 // Selectors
 const todoInput = document.querySelector(".todoInput");
@@ -10,12 +10,15 @@ const todoList = document.querySelector(".todoList");
 const filterDropdown = document.querySelector(".filterTasks");
 const todoDescriptionText = document.querySelector(".inputDescription");
 const datePicker = document.querySelector(".datePicker");
-const datesUI = document.querySelector(".dates");
+const nextMonthUI = document.querySelector(".datePicker .dates .month .nextMonth");
+const prevMonthUI = document.querySelector(".datePicker .dates .month .prevMonth");
 
 //Event listeners
 todoButton.addEventListener("click", addTodoTask);
 filterDropdown.addEventListener("click", filterList);
 datePicker.addEventListener("click", toggleDatePicker);
+nextMonthUI.addEventListener("click", getNextMonth);
+prevMonthUI.addEventListener("click", getPrevMonth);
 
 // Functions
 function addTodoTask(event) {

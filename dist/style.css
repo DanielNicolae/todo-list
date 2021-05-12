@@ -82,6 +82,7 @@ body
         display: flex;
         align-items: center;
         justify-content: center;
+        background-color: rgb(247, 227, 48);
       }
       .datePicker .dates
       {
@@ -99,6 +100,11 @@ body
           align-items: center;
           border-bottom: 2px solid #3f3e3e;
         }
+          .datePicker .dates .month .arrow
+          {
+            font-size: 1.8rem;
+            text-shadow: 3px 3px rgb(180, 180, 180);
+          }
           .datePicker .dates .month .arrow:hover
           {
             background: #f3f3f3;
@@ -106,6 +112,10 @@ body
           .datePicker .dates .month .arrow:active
           {
             background: #ffed4d;
+          }
+          .datePicker .dates .month .date
+          {
+            padding: 0 10px 5px 10px;
           }
         .datePicker .dates .days
         {
