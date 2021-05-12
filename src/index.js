@@ -1,7 +1,7 @@
 import deleteListTask from "./deletetask";
 import completedTask from "./completedtask";
 import filterList from "./filterList";
-import toggleDatePicker from "./datePicker";
+import { toggleDatePicker, generateDate } from "./datePicker";
 
 // Selectors
 const todoInput = document.querySelector(".todoInput");
@@ -10,6 +10,7 @@ const todoList = document.querySelector(".todoList");
 const filterDropdown = document.querySelector(".filterTasks");
 const todoDescriptionText = document.querySelector(".inputDescription");
 const datePicker = document.querySelector(".datePicker");
+const datesUI = document.querySelector(".dates");
 
 //Event listeners
 todoButton.addEventListener("click", addTodoTask);
@@ -55,4 +56,5 @@ function addTodoTask(event) {
 }
 
 filterList();
+generateDate();
 
