@@ -1,9 +1,9 @@
 
-const TodoList = document.querySelector(".todoList");
+const todoList = document.querySelector(".todoList");
 
 
 export default function filterList(e) {
-  const todos = TodoList.childNodes;
+  const todos = todoList.childNodes;
   todos.forEach((todo) => {
     switch (e.target.value) {
       case "all":
