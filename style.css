@@ -128,11 +128,15 @@ body
           justify-content: center;
           align-items: center;
           color: #303030;
-          padding: 5px;
+          padding: 0 5px;
+        }
+        .datePicker .dates .days .day:hover
+        {
+          background-color: aquamarine;
         }
         .datePicker .dates .days .day.selected
         {
-          background: rgb(255, 241, 39);
+          background: rgb(255, 189, 66);
         }
         
     form .datePicker:hover
@@ -149,9 +153,10 @@ body
       content: "\25BC";
       background: rgb(15, 27, 95);
       pointer-events: none;
-      transform: translateX(-1rem);
+      transform: translateX(-2rem);
       z-index: 1000; 
-      font-size: 2rem;   
+      font-size: 2rem;
+      height: 2.3rem;   
     }
       .filterTasks
       {
