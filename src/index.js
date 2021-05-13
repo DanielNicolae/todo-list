@@ -12,6 +12,7 @@ const todoDescriptionText = document.querySelector(".inputDescription");
 const datePicker = document.querySelector(".datePicker");
 const nextMonthUI = document.querySelector(".datePicker .dates .month .nextMonth");
 const prevMonthUI = document.querySelector(".datePicker .dates .month .prevMonth");
+const selectedDateUI = document.querySelector(".selectedDate");
 
 //Event listeners
 todoButton.addEventListener("click", addTodoTask);
@@ -51,11 +52,14 @@ function addTodoTask(event) {
   const todoDescription = document.createElement("p");
   todoDescription.classList.add("todoDescription");
   todoDescription.innerText = todoDescriptionText.value;
+  todoTaskContainer.appendChild(todoDescription);
+  todoDescriptionText.value = "";
+
+  // todo date
   const todoDate = document.createElement("p");
   todoDate.classList.add("todoDate");
-  todoTaskContainer.appendChild(todoDescription);
+  todoDate.textContent = selectedDateUI.innerText;
   todoTaskContainer.appendChild(todoDate);
-  todoDescriptionText.value = "";
 }
 
 filterList();

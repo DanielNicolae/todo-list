@@ -45,16 +45,16 @@ function selectDate() {
 }
 
 function selectDateHelper(d) {
-  let day = d.getDate();
-  if (day < 10) {
-    day = "0" + day;
+  let selectDateDay = d.getDate();
+  if (selectDateDay < 10) {
+    selectDateDay = "0" + selectDateDay;
   }
-  let month = d.getMonth() + 1;
-  if (month < 10) {
-    month = "0" + month;
+  let selectDateMonth = d.getMonth() + 1;
+  if (selectDateMonth < 10) {
+    selectDateMonth = "0" + selectDateMonth;
   }
-  let year = d.getFullYear();
-  return (day + "/" + month + "/" + year);
+  let selectDateYear = d.getFullYear();
+  return (selectDateDay + "/" + selectDateMonth + "/" + selectDateYear);
 }
 
 function toggleDatePicker(event) {
@@ -82,6 +82,19 @@ function populateDates(e) {
     const dayElement = document.createElement("div");
     dayElement.classList.add("day");
     dayElement.textContent = i + 1;
+    if (currentDay === (i + 1) && currentMonth === month && currentYear === year) {
+      dayElement.classList.add("selected");
+    }
+
+    dayElement.addEventListener("click", () => {
+      currentDate = new Date(year + "-" + (month + 1) + "-" + (i + 1));
+      currentDay = (i + 1);
+      currentMonth = month;
+      currentYear = year;
+      selectedDateUI.textContent = selectDateHelper(currentDate);
+      selectedDateUI.dataset.value = currentDate;
+    });
+
     daysUI.appendChild(dayElement);
   }
 }
