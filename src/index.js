@@ -2,6 +2,7 @@ import deleteListTask from "./deletetask";
 import completedTask from "./completedtask";
 import filterList from "./filterList";
 import { toggleDatePicker, generateDate, getNextMonth, getPrevMonth, selectDate, populateDates } from "./datePicker";
+import saveToLocalStorage from "./saveToLocalStorage";
 
 // Selectors
 const todoInput = document.querySelector(".todoInput");
@@ -27,17 +28,14 @@ function addTodoTask(event) {
   event.preventDefault();
   const todoTaskContainer = document.createElement("div");
   todoTaskContainer.classList.add("todoTaskContainer");
-  let todo = [];
   const todoTask = document.createElement("li");
   todoTask.classList.add("todoTask");
   todoTask.innerText = todoInput.value;
-  todo.push(todoInput.value);
   const completedBotton = document.createElement("button");
   completedBotton.innerHTML = '<i class="fas fa-check"></i>';
   completedBotton.classList.add("completedButton");
   completedBotton.addEventListener("click", completedTask);
   todoTaskContainer.appendChild(completedBotton);
-
   todoTaskContainer.appendChild(todoTask);
 
   const trashBotton = document.createElement("button");
@@ -45,26 +43,31 @@ function addTodoTask(event) {
   trashBotton.classList.add("trashButton");
   trashBotton.addEventListener("click", deleteListTask);
   todoTaskContainer.appendChild(trashBotton);
-
   todoList.appendChild(todoTaskContainer);
-  todoInput.value = "";
 
   // todo description
   const todoDescription = document.createElement("p");
   todoDescription.classList.add("todoDescription");
   todoDescription.innerText = todoDescriptionText.value;
   todoTaskContainer.appendChild(todoDescription);
-  todo.push(todoDescriptionText.value);
-  todoDescriptionText.value = "";
+
+
 
   // todo date
   const todoDate = document.createElement("p");
   todoDate.classList.add("todoDate");
   todoDate.textContent = selectedDateUI.innerText;
   todoTaskContainer.appendChild(todoDate);
-  todo.push(selectedDateUI.innerText);
 
-  saveToLocalStorage(todo);
+  let todoObj = {
+    title: todoInput.value,
+    description: todoDescriptionText.value,
+    date: selectedDateUI.innerText
+  };
+  saveToLocalStorage(todoObj);
+
+  todoInput.value = "";
+  todoDescriptionText.value = "";
 }
 
 filterList();
@@ -72,16 +75,7 @@ generateDate();
 selectDate();
 populateDates();
 
-function saveToLocalStorage(list) {
-  let todos;
-  if (localStorage.getItem("todos") === null) {
-    todos = [];
-  } else {
-    todos = JSON.parse(localStorage.getItem("todos"));
-  }
-  todos.push(list);
-  localStorage.setItem("todos", JSON.stringify(todos));
-}
+
 
 function getTodosFromLocalStorage() {
   let todos;
@@ -95,7 +89,7 @@ function getTodosFromLocalStorage() {
     todoTaskContainer.classList.add("todoTaskContainer");
     const todoTask = document.createElement("li");
     todoTask.classList.add("todoTask");
-    todoTask.innerText = todo[0];
+    todoTask.innerText = todo.title;
 
     const completedBotton = document.createElement("button");
     completedBotton.innerHTML = '<i class="fas fa-check"></i>';
@@ -116,13 +110,14 @@ function getTodosFromLocalStorage() {
     // todo description
     const todoDescription = document.createElement("p");
     todoDescription.classList.add("todoDescription");
-    todoDescription.innerText = todo[1];
+    todoDescription.innerText = todo.description;
     todoTaskContainer.appendChild(todoDescription);
 
     // todo date
     const todoDate = document.createElement("p");
     todoDate.classList.add("todoDate");
-    todoDate.textContent = todo[2];
+    todoDate.textContent = todo.date;
     todoTaskContainer.appendChild(todoDate);
   });
 }
+
