@@ -1,6 +1,7 @@
 {
   "name": "To-do list",
-  "short_name": "To-do list",
+  "short_name": "To-doList",
+  "start-url": "./index.html",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
@@ -13,7 +14,7 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff",
+  "theme_color": "#140d22",
+  "background_color": "#140d22",
   "display": "standalone"
 }
